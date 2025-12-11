@@ -55,19 +55,10 @@ The dataset contains **300,154 flight records** with the following features:
 ## Project Structure
 
 ```
-final project/
+DEPI/
 ├── final project[1].ipynb          # Main Jupyter notebook
-├── airlines_flights_data.csv       # Dataset (300K+ records)
-├── app.py                          # Streamlit web application
-├── best_model.pkl                  # Trained Random Forest model (37MB)
-├── scaler.pkl                      # StandardScaler for preprocessing
-├── requirements.txt                # Python dependencies
-├── save_models.py                  # Helper script to save models
-├── run_app.bat                     # Windows batch file to run app
-├── DEPLOYMENT.md                   # Deployment guide
-├── README.md                       # This documentation
-└── .streamlit/
-    └── config.toml                 # Streamlit configuration
+├── airlines_flights_data.csv       # Dataset
+└── README.md                        # This documentation
 ```
 
 ---
@@ -77,24 +68,18 @@ final project/
 ### Required Libraries
 
 ```python
-streamlit>=1.28.0
-pandas>=2.0.0
-numpy>=1.26.0
-scikit-learn>=1.3.0
-xgboost>=2.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+scikit-learn>=1.0.0
+xgboost>=1.5.0
 ```
 
 ### Installation
 
 ```bash
-pip install -r requirements.txt
-```
-
-Or install individually:
-```bash
-pip install streamlit pandas numpy matplotlib seaborn scikit-learn xgboost
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost
 ```
 
 ---
@@ -357,33 +342,7 @@ plt.title("Model Comparison (R2)")
 
 ## Usage
 
-### 🌐 Live Demo
-
-**Try the deployed app:** [https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app](https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app)
-
-### Running Locally
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/kar1myasser/Flight-predection.git
-   cd Flight-predection
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Streamlit app:**
-   ```bash
-   streamlit run app.py
-   ```
-   Or on Windows, double-click `run_app.bat`
-
-4. **Open your browser:**
-   Navigate to `http://localhost:8501`
-
-### Running the Jupyter Notebook
+### Running the Complete Pipeline
 
 1. **Open the notebook:**
    ```bash
@@ -397,37 +356,18 @@ plt.title("Model Comparison (R2)")
    - Preprocess features
    - Train models
    - Evaluate and compare
-   - Save optimized model
 
-### Making Predictions via Web App
-
-1. Select flight details (airline, source, destination, etc.)
-2. Choose departure time and travel class
-3. Enter duration and days until departure
-4. Click "Predict Flight Price"
-5. View estimated price with insights
-
-### Making Predictions via Code
+### Making Predictions
 
 ```python
-import pickle
-import numpy as np
+# Example: Predict price for new flight data
+new_flight = [[encoded_airline, encoded_source, encoded_departure, 
+               encoded_stops, encoded_destination, encoded_class, 
+               duration, days_left]]
 
-# Load model and scaler
-with open('best_model.pkl', 'rb') as f:
-    model = pickle.load(f)
-with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)
-
-# Prepare input (encoded values)
-new_flight = np.array([[airline_encoded, source_encoded, departure_encoded,
-                        stops_encoded, destination_encoded, class_encoded,
-                        duration, days_left]])
-
-# Scale and predict
 new_flight_scaled = scaler.transform(new_flight)
-predicted_price = model.predict(new_flight_scaled)[0]
-print(f"Predicted Price: ${predicted_price:.2f} USD (₹{predicted_price * 87.04:.0f})")
+predicted_price = RF_model.predict(new_flight_scaled)
+print(f"Predicted Price: ${predicted_price[0]:.2f}")
 ```
 
 ---
@@ -477,12 +417,10 @@ print(f"Predicted Price: ${predicted_price:.2f} USD (₹{predicted_price * 87.04
 
 ### 4. Deployment
 
-- ✅ **Streamlit Cloud deployment** - Currently live!
-- **REST API** for real-time predictions (FastAPI)
-- **Docker containerization** for consistent environments
+- **REST API** for real-time predictions
+- **Web interface** for user-friendly access
 - **Model monitoring** for performance tracking
 - **A/B testing** for model comparison in production
-- **Custom domain** setup
 
 ### 5. Additional Features
 
@@ -519,43 +457,9 @@ print(f"Predicted Price: ${predicted_price:.2f} USD (₹{predicted_price * 87.04
 
 ---
 
-## Deployment
-
-### Live Application
-
-**URL:** [https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app](https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app)
-
-**Platform:** Streamlit Cloud (Free Tier)
-
-**Features:**
-- Interactive web interface
-- Real-time price predictions
-- User-friendly input forms
-- Price insights and recommendations
-- Responsive design
-
-### Deployment Process
-
-1. **Optimized Model:** Reduced from 795MB to 37MB
-2. **Git Repository:** Pushed to GitHub
-3. **Streamlit Cloud:** Connected and deployed
-4. **Public Access:** Available worldwide
-
-For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)
-
----
-
-## Repository
-
-**GitHub:** [https://github.com/kar1myasser/Flight-predection](https://github.com/kar1myasser/Flight-predection)
-
----
-
 ## Contributors
 
 This project was developed as part of the DEPI (Digital Egypt Pioneers Initiative) program.
-
-**Developer:** Karim Yasser ([@kar1myasser](https://github.com/kar1myasser))
 
 ---
 
@@ -567,9 +471,7 @@ This project is for educational purposes.
 
 ## Contact
 
-For questions or suggestions:
-- GitHub Issues: [https://github.com/kar1myasser/Flight-predection/issues](https://github.com/kar1myasser/Flight-predection/issues)
-- GitHub Profile: [@kar1myasser](https://github.com/kar1myasser)
+For questions or suggestions, please refer to the project maintainer.
 
 ---
 
@@ -583,30 +485,7 @@ For questions or suggestions:
 
 ## Version History
 
-- **v1.0** (December 11, 2025)
-  - Initial release with complete pipeline and model comparison
-  - Jupyter notebook with EDA and 4 ML models
-  - Best R² score: 98-99% (Random Forest)
-  
-- **v1.1** (December 11, 2025)
-  - Added Streamlit web application
-  - Deployed to Streamlit Cloud
-  - Optimized model size (795MB → 37MB)
-  - Added interactive prediction interface
-  - Complete documentation and deployment guide
-
----
-
-## Screenshots
-
-### Web Application
-![Flight Price Predictor](https://img.shields.io/badge/Streamlit-Live-brightgreen)
-
-The web app features:
-- 🎨 Modern UI with custom theming
-- 📊 Real-time predictions
-- 💡 Price insights and recommendations
-- 📱 Mobile-responsive design
+- **v1.0** - Initial release with complete pipeline and model comparison
 
 ---
 
