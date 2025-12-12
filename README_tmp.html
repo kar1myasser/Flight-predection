@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="airline-flight-price-prediction---final-project">Airline Flight Price Prediction - Final Project</h1>
+<h2 id="project-overview">Project Overview</h2>
+<p>This project implements a machine learning solution to predict airline flight prices based on various flight characteristics. The project includes comprehensive data analysis, preprocessing, feature engineering, and comparison of multiple regression models to identify the best performing algorithm.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#dataset-description">Dataset Description</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#installation--requirements">Installation &amp; Requirements</a></li>
+<li><a href="#data-processing-pipeline">Data Processing Pipeline</a></li>
+<li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+<li><a href="#model-development">Model Development</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#key-insights">Key Insights</a></li>
+<li><a href="#future-improvements">Future Improvements</a></li>
+</ul>
+<hr>
+<h2 id="dataset-description">Dataset Description</h2>
+<p><strong>File:</strong> <code>airlines_flights_data.csv</code></p>
+<p>The dataset contains <strong>300,154 flight records</strong> with the following features:</p>
+<h3 id="original-features">Original Features</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td>Numeric</td>
+<td>Record identifier (dropped during preprocessing)</td>
+</tr>
+<tr>
+<td><code>airline</code></td>
+<td>Categorical</td>
+<td>Airline company name</td>
+</tr>
+<tr>
+<td><code>flight</code></td>
+<td>Categorical</td>
+<td>Flight code (dropped during preprocessing)</td>
+</tr>
+<tr>
+<td><code>source_city</code></td>
+<td>Categorical</td>
+<td>Departure city</td>
+</tr>
+<tr>
+<td><code>departure_time</code></td>
+<td>Categorical</td>
+<td>Time period of departure</td>
+</tr>
+<tr>
+<td><code>stops</code></td>
+<td>Categorical</td>
+<td>Number of stops (zero, one, two_or_more)</td>
+</tr>
+<tr>
+<td><code>arrival_time</code></td>
+<td>Categorical</td>
+<td>Time period of arrival (dropped during preprocessing)</td>
+</tr>
+<tr>
+<td><code>destination_city</code></td>
+<td>Categorical</td>
+<td>Arrival city</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>Categorical</td>
+<td>Travel class (Economy/Business)</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Numeric</td>
+<td>Flight duration in hours</td>
+</tr>
+<tr>
+<td><code>days_left</code></td>
+<td>Numeric</td>
+<td>Days until departure</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>Numeric</td>
+<td><strong>Target variable</strong> - Ticket price</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-characteristics">Data Characteristics</h3>
+<ul>
+<li><strong>No missing values</strong> in any column</li>
+<li><strong>No duplicate records</strong></li>
+<li>Price originally in INR (Indian Rupees), converted to USD (₹87.04 = $1)</li>
+<li>Multiple airlines: SpiceJet, AirAsia, Vistara, Air India, Indigo, GO_FIRST</li>
+<li>Six departure time periods: Early_Morning, Morning, Afternoon, Evening, Night, Late_Night</li>
+</ul>
+<hr>
+<h2 id="project-structure">Project Structure</h2>
+<pre class="hljs"><code><div>final project/
+├── final project[1].ipynb          # Main Jupyter notebook
+├── airlines_flights_data.csv       # Dataset (300K+ records)
+├── app.py                          # Streamlit web application
+├── best_model.pkl                  # Trained Random Forest model (37MB)
+├── scaler.pkl                      # StandardScaler for preprocessing
+├── requirements.txt                # Python dependencies
+├── save_models.py                  # Helper script to save models
+├── run_app.bat                     # Windows batch file to run app
+├── DEPLOYMENT.md                   # Deployment guide
+├── README.md                       # This documentation
+└── .streamlit/
+    └── config.toml                 # Streamlit configuration
+</div></code></pre>
+<hr>
+<h2 id="installation--requirements">Installation &amp; Requirements</h2>
+<h3 id="required-libraries">Required Libraries</h3>
+<pre class="hljs"><code><div>streamlit&gt;=<span class="hljs-number">1.28</span><span class="hljs-number">.0</span>
+pandas&gt;=<span class="hljs-number">2.0</span><span class="hljs-number">.0</span>
+numpy&gt;=<span class="hljs-number">1.26</span><span class="hljs-number">.0</span>
+scikit-learn&gt;=<span class="hljs-number">1.3</span><span class="hljs-number">.0</span>
+xgboost&gt;=<span class="hljs-number">2.0</span><span class="hljs-number">.0</span>
+matplotlib&gt;=<span class="hljs-number">3.7</span><span class="hljs-number">.0</span>
+seaborn&gt;=<span class="hljs-number">0.12</span><span class="hljs-number">.0</span>
+</div></code></pre>
+<h3 id="installation">Installation</h3>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<p>Or install individually:</p>
+<pre class="hljs"><code><div>pip install streamlit pandas numpy matplotlib seaborn scikit-learn xgboost
+</div></code></pre>
+<hr>
+<h2 id="data-processing-pipeline">Data Processing Pipeline</h2>
+<h3 id="1-data-loading--initial-exploration">1. Data Loading &amp; Initial Exploration</h3>
+<pre class="hljs"><code><div>df = pd.read_csv(<span class="hljs-string">"airlines_flights_data.csv"</span>)
+df.info()
+df.isna().sum()
+df.duplicated().sum()
+</div></code></pre>
+<p><strong>Findings:</strong></p>
+<ul>
+<li>✅ No missing values</li>
+<li>✅ No duplicates</li>
+<li>Dataset ready for processing</li>
+</ul>
+<h3 id="2-feature-engineering">2. Feature Engineering</h3>
+<h4 id="dropped-features">Dropped Features</h4>
+<pre class="hljs"><code><div>df.drop([<span class="hljs-string">"arrival_time"</span>, <span class="hljs-string">'flight'</span>, <span class="hljs-string">'index'</span>], axis=<span class="hljs-number">1</span>, inplace=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<p><strong>Rationale:</strong></p>
+<ul>
+<li><code>index</code>: Redundant identifier</li>
+<li><code>flight</code>: Flight code doesn't contribute to price prediction</li>
+<li><code>arrival_time</code>: High correlation with departure_time + duration</li>
+</ul>
+<h4 id="price-conversion">Price Conversion</h4>
+<pre class="hljs"><code><div>df[<span class="hljs-string">'price'</span>] = (df[<span class="hljs-string">'price'</span>]/<span class="hljs-number">87.04</span>).round()
+</div></code></pre>
+<p>Converted prices from INR to USD for better interpretability.</p>
+<h3 id="3-feature-categorization">3. Feature Categorization</h3>
+<p><strong>Categorical Features (6):</strong></p>
+<ul>
+<li><code>airline</code>, <code>source_city</code>, <code>departure_time</code>, <code>destination_city</code>, <code>class</code>, <code>stops</code></li>
+</ul>
+<p><strong>Numerical Features (2):</strong></p>
+<ul>
+<li><code>duration</code>, <code>days_left</code></li>
+</ul>
+<h3 id="4-outlier-treatment">4. Outlier Treatment</h3>
+<p>Applied <strong>IQR method</strong> to <code>duration</code> feature:</p>
+<pre class="hljs"><code><div>q1 = df[<span class="hljs-string">'duration'</span>].quantile(<span class="hljs-number">0.25</span>)
+q3 = df[<span class="hljs-string">'duration'</span>].quantile(<span class="hljs-number">0.75</span>)
+iqr = q3 - q1 
+lower_bound = q1 - iqr * <span class="hljs-number">1.5</span>
+upper_bound = q3 + iqr * <span class="hljs-number">1.5</span>
+
+df[<span class="hljs-string">'duration'</span>] = df[<span class="hljs-string">'duration'</span>].clip(lower=lower_bound, upper=upper_bound)
+</div></code></pre>
+<h3 id="5-encoding">5. Encoding</h3>
+<p><strong>Label Encoding</strong> applied to all categorical features using <code>LabelEncoder()</code>.</p>
+<h3 id="6-feature-scaling">6. Feature Scaling</h3>
+<p><strong>StandardScaler</strong> applied to ensure all features have:</p>
+<ul>
+<li>Mean = 0</li>
+<li>Standard deviation = 1</li>
+</ul>
+<pre class="hljs"><code><div>scaler = StandardScaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+</div></code></pre>
+<hr>
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<h3 id="visualizations-implemented">Visualizations Implemented</h3>
+<h4 id="1-price-distribution">1. Price Distribution</h4>
+<ul>
+<li><strong>Type:</strong> Histogram with KDE</li>
+<li><strong>Finding:</strong> Price distribution shows right-skewed pattern</li>
+</ul>
+<h4 id="2-flights-per-airline">2. Flights per Airline</h4>
+<ul>
+<li><strong>Type:</strong> Bar chart</li>
+<li><strong>Finding:</strong> Distribution of flights across different airlines</li>
+</ul>
+<h4 id="3-departure-times-analysis">3. Departure Times Analysis</h4>
+<ul>
+<li><strong>Type:</strong> Bar chart</li>
+<li><strong>Finding:</strong> Distribution of flights across different time periods</li>
+</ul>
+<h4 id="4-city-analysis">4. City Analysis</h4>
+<ul>
+<li><strong>Source Cities:</strong> Distribution of departure cities</li>
+<li><strong>Destination Cities:</strong> Distribution of arrival cities</li>
+</ul>
+<h4 id="5-price-analysis">5. Price Analysis</h4>
+<h5 id="average-price-by-airline">Average Price by Airline</h5>
+<ul>
+<li>Bar chart showing which airlines charge more on average</li>
+</ul>
+<h5 id="price-vs-departure-time">Price vs Departure Time</h5>
+<ul>
+<li>Bar chart (descending order)</li>
+<li><strong>Insight:</strong> Certain departure times command premium prices</li>
+</ul>
+<h5 id="price-vs-days-left">Price vs Days Left</h5>
+<ul>
+<li>Line plot showing price trend</li>
+<li><strong>Insight:</strong> Price changes as departure date approaches</li>
+</ul>
+<h5 id="economy-vs-business">Economy vs Business</h5>
+<ul>
+<li><strong>Finding:</strong> Business class significantly more expensive than Economy</li>
+</ul>
+<h5 id="price-vs-number-of-stops">Price vs Number of Stops</h5>
+<ul>
+<li>Bar chart showing impact of layovers</li>
+<li><strong>Insight:</strong> Direct flights (zero stops) typically priced differently than multi-stop flights</li>
+</ul>
+<h4 id="6-outlier-detection">6. Outlier Detection</h4>
+<ul>
+<li>Box plots for all numerical features (<code>duration</code>, <code>days_left</code>, <code>price</code>)</li>
+</ul>
+<h3 id="color-scheme">Color Scheme</h3>
+<p>Custom color gradient (teal to salmon) for consistent and professional visualizations:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> matplotlib.colors <span class="hljs-keyword">as</span> mcolors
+colors = mcolors.LinearSegmentedColormap.from_list(<span class="hljs-string">""</span>, [<span class="hljs-string">"teal"</span>, <span class="hljs-string">"salmon"</span>])
+</div></code></pre>
+<hr>
+<h2 id="model-development">Model Development</h2>
+<h3 id="train-test-split">Train-Test Split</h3>
+<pre class="hljs"><code><div>x = df.drop(<span class="hljs-string">'price'</span>, axis=<span class="hljs-number">1</span>)
+y = df[<span class="hljs-string">'price'</span>]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="hljs-number">0.3</span>, random_state=<span class="hljs-number">101</span>)
+</div></code></pre>
+<ul>
+<li><strong>Training Set:</strong> 70%</li>
+<li><strong>Test Set:</strong> 30%</li>
+<li><strong>Random State:</strong> 101 (for reproducibility)</li>
+</ul>
+<h3 id="models-implemented">Models Implemented</h3>
+<p>Four regression models were trained and compared:</p>
+<h4 id="1-random-forest-regressor">1. Random Forest Regressor</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestRegressor
+
+RF_model = RandomForestRegressor()
+RF_model.fit(x_train_scaled, y_train)
+</div></code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Handles non-linear relationships</li>
+<li>Resistant to overfitting</li>
+<li>Feature importance insights</li>
+</ul>
+<h4 id="2-linear-regression">2. Linear Regression</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+
+reg_model = LinearRegression()
+reg_model.fit(x_train_scaled, y_train)
+</div></code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Simple and interpretable</li>
+<li>Fast training</li>
+<li>Baseline model</li>
+</ul>
+<h4 id="3-support-vector-regression-svm">3. Support Vector Regression (SVM)</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.svm <span class="hljs-keyword">import</span> SVR
+
+svm = SVR()
+svm.fit(x_train_scaled, y_train)
+</div></code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Effective in high-dimensional spaces</li>
+<li>Robust to outliers</li>
+</ul>
+<h4 id="4-xgboost-regressor">4. XGBoost Regressor</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> xgboost <span class="hljs-keyword">import</span> XGBRegressor
+
+xgb_model = XGBRegressor()
+xgb_model.fit(x_train_scaled, y_train)
+</div></code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>State-of-the-art performance</li>
+<li>Handles missing values</li>
+<li>Built-in regularization</li>
+</ul>
+<h3 id="evaluation-metrics">Evaluation Metrics</h3>
+<p>For each model, we calculated:</p>
+<ol>
+<li>
+<p><strong>R² Score (Coefficient of Determination)</strong></p>
+<ul>
+<li>Percentage of variance explained by the model</li>
+<li>Range: 0-100% (higher is better)</li>
+</ul>
+</li>
+<li>
+<p><strong>Mean Squared Error (MSE)</strong></p>
+<ul>
+<li>Average squared difference between predictions and actual values</li>
+<li>Lower is better</li>
+</ul>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> mean_squared_error, r2_score
+
+y_pred = model.predict(x_test_scaled)
+print(<span class="hljs-string">f"R2: <span class="hljs-subst">{r2_score(y_test, y_pred) * <span class="hljs-number">100</span>:<span class="hljs-number">.2</span>f}</span>%"</span>)
+print(<span class="hljs-string">"MSE:"</span>, mean_squared_error(y_test, y_pred))
+</div></code></pre>
+<hr>
+<h2 id="results">Results</h2>
+<h3 id="model-performance-comparison">Model Performance Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>R² Score</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Random Forest</strong></td>
+<td>~98-99%</td>
+<td>⭐⭐⭐⭐⭐ Excellent</td>
+</tr>
+<tr>
+<td><strong>XGBoost</strong></td>
+<td>~98-99%</td>
+<td>⭐⭐⭐⭐⭐ Excellent</td>
+</tr>
+<tr>
+<td><strong>Linear Regression</strong></td>
+<td>~85-90%</td>
+<td>⭐⭐⭐ Good</td>
+</tr>
+<tr>
+<td><strong>SVM</strong></td>
+<td>~80-85%</td>
+<td>⭐⭐ Fair</td>
+</tr>
+</tbody>
+</table>
+<h3 id="best-performing-models">Best Performing Models</h3>
+<p><strong>Random Forest</strong> and <strong>XGBoost</strong> emerged as the top performers with R² scores in the <strong>98-99% range</strong>, indicating excellent predictive capability.</p>
+<h3 id="visualization">Visualization</h3>
+<p>A comparative bar plot displays all model performances:</p>
+<pre class="hljs"><code><div>models = [<span class="hljs-string">"SVM"</span>, <span class="hljs-string">"Linear Regression"</span>, <span class="hljs-string">"Random Forest"</span>, <span class="hljs-string">"XGBooost"</span>]
+scores = [R2_for_svm, R2_for_Linear_Regression, R2_for_RF, R2_for_XGboost]
+
+sns.barplot(x=models, y=scores, palette=<span class="hljs-string">"coolwarm"</span>)
+plt.ylim(<span class="hljs-number">80</span>, <span class="hljs-number">100</span>)
+plt.ylabel(<span class="hljs-string">"R2 Score"</span>)
+plt.title(<span class="hljs-string">"Model Comparison (R2)"</span>)
+</div></code></pre>
+<hr>
+<h2 id="usage">Usage</h2>
+<h3 id="%F0%9F%8C%90-live-demo">🌐 Live Demo</h3>
+<p><strong>Try the deployed app:</strong> <a href="https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app">https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app</a></p>
+<h3 id="running-locally">Running Locally</h3>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong></p>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/kar1myasser/Flight-predection.git
+<span class="hljs-built_in">cd</span> Flight-predection
+</div></code></pre>
+</li>
+<li>
+<p><strong>Install dependencies:</strong></p>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+</li>
+<li>
+<p><strong>Run the Streamlit app:</strong></p>
+<pre class="hljs"><code><div>streamlit run app.py
+</div></code></pre>
+<p>Or on Windows, double-click <code>run_app.bat</code></p>
+</li>
+<li>
+<p><strong>Open your browser:</strong>
+Navigate to <code>http://localhost:8501</code></p>
+</li>
+</ol>
+<h3 id="running-the-jupyter-notebook">Running the Jupyter Notebook</h3>
+<ol>
+<li>
+<p><strong>Open the notebook:</strong></p>
+<pre class="hljs"><code><div>jupyter notebook <span class="hljs-string">"final project[1].ipynb"</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Execute cells sequentially:</strong></p>
+<ul>
+<li>Import libraries</li>
+<li>Load and explore data</li>
+<li>Visualize data</li>
+<li>Preprocess features</li>
+<li>Train models</li>
+<li>Evaluate and compare</li>
+<li>Save optimized model</li>
+</ul>
+</li>
+</ol>
+<h3 id="making-predictions-via-web-app">Making Predictions via Web App</h3>
+<ol>
+<li>Select flight details (airline, source, destination, etc.)</li>
+<li>Choose departure time and travel class</li>
+<li>Enter duration and days until departure</li>
+<li>Click &quot;Predict Flight Price&quot;</li>
+<li>View estimated price with insights</li>
+</ol>
+<h3 id="making-predictions-via-code">Making Predictions via Code</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pickle
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Load model and scaler</span>
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'best_model.pkl'</span>, <span class="hljs-string">'rb'</span>) <span class="hljs-keyword">as</span> f:
+    model = pickle.load(f)
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'scaler.pkl'</span>, <span class="hljs-string">'rb'</span>) <span class="hljs-keyword">as</span> f:
+    scaler = pickle.load(f)
+
+<span class="hljs-comment"># Prepare input (encoded values)</span>
+new_flight = np.array([[airline_encoded, source_encoded, departure_encoded,
+                        stops_encoded, destination_encoded, class_encoded,
+                        duration, days_left]])
+
+<span class="hljs-comment"># Scale and predict</span>
+new_flight_scaled = scaler.transform(new_flight)
+predicted_price = model.predict(new_flight_scaled)[<span class="hljs-number">0</span>]
+print(<span class="hljs-string">f"Predicted Price: $<span class="hljs-subst">{predicted_price:<span class="hljs-number">.2</span>f}</span> USD (₹<span class="hljs-subst">{predicted_price * <span class="hljs-number">87.04</span>:<span class="hljs-number">.0</span>f}</span>)"</span>)
+</div></code></pre>
+<hr>
+<h2 id="key-insights">Key Insights</h2>
+<h3 id="from-eda">From EDA</h3>
+<ol>
+<li><strong>Departure Time Impact:</strong> Certain time slots command premium pricing</li>
+<li><strong>Days Left Correlation:</strong> Price varies significantly based on booking advance</li>
+<li><strong>Class Premium:</strong> Business class substantially more expensive than Economy</li>
+<li><strong>Stops Effect:</strong> Number of layovers directly impacts pricing</li>
+<li><strong>Airline Variation:</strong> Different airlines have different pricing strategies</li>
+<li><strong>Duration Factor:</strong> Longer flights generally cost more</li>
+</ol>
+<h3 id="from-model-training">From Model Training</h3>
+<ol>
+<li><strong>Tree-based models</strong> (Random Forest, XGBoost) outperform linear models</li>
+<li><strong>Ensemble methods</strong> provide superior accuracy for this problem</li>
+<li><strong>Feature scaling</strong> is critical for SVM and Linear Regression performance</li>
+<li><strong>Non-linear relationships</strong> exist between features and price</li>
+</ol>
+<hr>
+<h2 id="future-improvements">Future Improvements</h2>
+<h3 id="1-model-enhancements">1. Model Enhancements</h3>
+<ul>
+<li><strong>Hyperparameter tuning</strong> using GridSearchCV or RandomizedSearchCV</li>
+<li><strong>Cross-validation</strong> for more robust performance estimates</li>
+<li><strong>Feature importance analysis</strong> to identify key price drivers</li>
+<li><strong>Ensemble stacking</strong> combining multiple models</li>
+</ul>
+<h3 id="2-feature-engineering">2. Feature Engineering</h3>
+<ul>
+<li><strong>Time-based features:</strong> Month, day of week, season</li>
+<li><strong>Route popularity:</strong> Frequency of specific routes</li>
+<li><strong>Price history:</strong> Historical pricing patterns</li>
+<li><strong>Demand indicators:</strong> Holiday periods, events</li>
+</ul>
+<h3 id="3-advanced-analysis">3. Advanced Analysis</h3>
+<ul>
+<li><strong>Temporal analysis:</strong> Price trends over time</li>
+<li><strong>Route-specific models:</strong> Specialized models for high-traffic routes</li>
+<li><strong>Competitor analysis:</strong> Cross-airline price comparison</li>
+<li><strong>Dynamic pricing:</strong> Real-time prediction updates</li>
+</ul>
+<h3 id="4-deployment">4. Deployment</h3>
+<ul>
+<li>✅ <strong>Streamlit Cloud deployment</strong> - Currently live!</li>
+<li><strong>REST API</strong> for real-time predictions (FastAPI)</li>
+<li><strong>Docker containerization</strong> for consistent environments</li>
+<li><strong>Model monitoring</strong> for performance tracking</li>
+<li><strong>A/B testing</strong> for model comparison in production</li>
+<li><strong>Custom domain</strong> setup</li>
+</ul>
+<h3 id="5-additional-features">5. Additional Features</h3>
+<ul>
+<li><strong>Confidence intervals</strong> for predictions</li>
+<li><strong>Feature contribution explanation</strong> (SHAP values)</li>
+<li><strong>Alternative metrics:</strong> MAE, RMSE, MAPE</li>
+<li><strong>Segmentation analysis:</strong> Different models for different customer segments</li>
+</ul>
+<hr>
+<h2 id="technical-notes">Technical Notes</h2>
+<h3 id="reproducibility">Reproducibility</h3>
+<ul>
+<li>Random state set to <strong>101</strong> for consistent results</li>
+<li>All preprocessing steps documented</li>
+<li>Model parameters explicitly stated</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<ul>
+<li>Dataset size: 300K+ records</li>
+<li>Training time varies by model:
+<ul>
+<li>Linear Regression: Seconds</li>
+<li>Random Forest: Minutes</li>
+<li>XGBoost: Minutes</li>
+<li>SVM: Longest (consider subset for testing)</li>
+</ul>
+</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ol>
+<li><strong>Geographic scope:</strong> India-focused dataset</li>
+<li><strong>Time period:</strong> Snapshot data, not time-series</li>
+<li><strong>External factors:</strong> Doesn't account for fuel prices, economic conditions</li>
+<li><strong>Seasonal variation:</strong> May not capture full yearly patterns</li>
+</ol>
+<hr>
+<h2 id="deployment">Deployment</h2>
+<h3 id="live-application">Live Application</h3>
+<p><strong>URL:</strong> <a href="https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app">https://flight-predection-aks6zgm9ciwpyjnfdtv4w7.streamlit.app</a></p>
+<p><strong>Platform:</strong> Streamlit Cloud (Free Tier)</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Interactive web interface</li>
+<li>Real-time price predictions</li>
+<li>User-friendly input forms</li>
+<li>Price insights and recommendations</li>
+<li>Responsive design</li>
+</ul>
+<h3 id="deployment-process">Deployment Process</h3>
+<ol>
+<li><strong>Optimized Model:</strong> Reduced from 795MB to 37MB</li>
+<li><strong>Git Repository:</strong> Pushed to GitHub</li>
+<li><strong>Streamlit Cloud:</strong> Connected and deployed</li>
+<li><strong>Public Access:</strong> Available worldwide</li>
+</ol>
+<p>For detailed deployment instructions, see <a href="DEPLOYMENT.md">DEPLOYMENT.md</a></p>
+<hr>
+<h2 id="repository">Repository</h2>
+<p><strong>GitHub:</strong> <a href="https://github.com/kar1myasser/Flight-predection">https://github.com/kar1myasser/Flight-predection</a></p>
+<hr>
+<h2 id="contributors">Contributors</h2>
+<p>This project was developed as part of the DEPI (Digital Egypt Pioneers Initiative) program.</p>
+<p><strong>Developer:</strong> Karim Yasser (<a href="https://github.com/kar1myasser">@kar1myasser</a>)</p>
+<hr>
+<h2 id="license">License</h2>
+<p>This project is for educational purposes.</p>
+<hr>
+<h2 id="contact">Contact</h2>
+<p>For questions or suggestions:</p>
+<ul>
+<li>GitHub Issues: <a href="https://github.com/kar1myasser/Flight-predection/issues">https://github.com/kar1myasser/Flight-predection/issues</a></li>
+<li>GitHub Profile: <a href="https://github.com/kar1myasser">@kar1myasser</a></li>
+</ul>
+<hr>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<ul>
+<li><strong>Dataset Source:</strong> Airlines flight data</li>
+<li><strong>Libraries:</strong> scikit-learn, XGBoost, pandas, matplotlib, seaborn</li>
+<li><strong>Program:</strong> DEPI - Digital Egypt Pioneers Initiative</li>
+</ul>
+<hr>
+<h2 id="version-history">Version History</h2>
+<ul>
+<li>
+<p><strong>v1.0</strong> (December 11, 2025)</p>
+<ul>
+<li>Initial release with complete pipeline and model comparison</li>
+<li>Jupyter notebook with EDA and 4 ML models</li>
+<li>Best R² score: 98-99% (Random Forest)</li>
+</ul>
+</li>
+<li>
+<p><strong>v1.1</strong> (December 11, 2025)</p>
+<ul>
+<li>Added Streamlit web application</li>
+<li>Deployed to Streamlit Cloud</li>
+<li>Optimized model size (795MB → 37MB)</li>
+<li>Added interactive prediction interface</li>
+<li>Complete documentation and deployment guide</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="screenshots">Screenshots</h2>
+<h3 id="web-application">Web Application</h3>
+<p><img src="https://img.shields.io/badge/Streamlit-Live-brightgreen" alt="Flight Price Predictor"></p>
+<p>The web app features:</p>
+<ul>
+<li>🎨 Modern UI with custom theming</li>
+<li>📊 Real-time predictions</li>
+<li>💡 Price insights and recommendations</li>
+<li>📱 Mobile-responsive design</li>
+</ul>
+<hr>
+<p><em>Last Updated: December 11, 2025</em></p>
+
+</body>
+</html>

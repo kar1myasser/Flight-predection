@@ -159,45 +159,110 @@ x_test_scaled = scaler.transform(x_test)
 
 ---
 
-## Exploratory Data Analysis
+<div style="page-break-inside: avoid; font-size: 0.9em;">
 
-### Visualizations Implemented
+### Exploratory Data Analysis
 
 #### 1. Price Distribution
 - **Type:** Histogram with KDE
 - **Finding:** Price distribution shows right-skewed pattern
 
+<br>
+
+<img src="image.png" alt="Price Distribution" width="500"/>
+
+<br>
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
+
 #### 2. Flights per Airline
 - **Type:** Bar chart
 - **Finding:** Distribution of flights across different airlines
+
+![alt text](image-1.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
 
 #### 3. Departure Times Analysis
 - **Type:** Bar chart
 - **Finding:** Distribution of flights across different time periods
 
+![alt text](image-2.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid; font-size: 0.9em;">
+
 #### 4. City Analysis
 - **Source Cities:** Distribution of departure cities
 - **Destination Cities:** Distribution of arrival cities
 
+<br>
+
+<img src="image-3.png" alt="Source Cities" width="500"/>
+<img src="image-4.png" alt="Destination Cities" width="500"/>
+
+<br>
+
+</div>
+
+<div style="page-break-before: always;">
+
 #### 5. Price Analysis
+
+</div>
+
+<div style="page-break-inside: avoid;">
 
 ##### Average Price by Airline
 - Bar chart showing which airlines charge more on average
+
+![alt text](image-5.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
 
 ##### Price vs Departure Time
 - Bar chart (descending order)
 - **Insight:** Certain departure times command premium prices
 
+![alt text](image-6.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
+
 ##### Price vs Days Left
 - Line plot showing price trend
 - **Insight:** Price changes as departure date approaches
 
+![alt text](image-7.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
+
 ##### Economy vs Business
 - **Finding:** Business class significantly more expensive than Economy
+
+![alt text](image-8.png)
+
+</div>
+
+<div style="page-break-before: always; page-break-inside: avoid;">
 
 ##### Price vs Number of Stops
 - Bar chart showing impact of layovers
 - **Insight:** Direct flights (zero stops) typically priced differently than multi-stop flights
+
+![alt text](image-9.png)
+
+</div>
 
 #### 6. Outlier Detection
 - Box plots for all numerical features (`duration`, `days_left`, `price`)
@@ -337,6 +402,12 @@ plt.ylim(80, 100)
 plt.ylabel("R2 Score")
 plt.title("Model Comparison (R2)")
 ```
+
+<div style="page-break-inside: avoid;">
+
+![alt text](image-11.png)
+
+</div>
 
 ---
 
