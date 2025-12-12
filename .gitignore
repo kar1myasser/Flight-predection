@@ -10,9 +10,6 @@
 # Batch files
 *.bat
 
-# PDF files (documentation)
-*.pdf
-
 # HTML files (documentation)
 *.html
 
@@ -42,6 +39,3 @@ my_env/
 .DS_Store
 Thumbs.db
 
-# Large data files (optional - uncomment if needed)
-# *.csv
-# *.pkl
