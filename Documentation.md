@@ -421,6 +421,8 @@ An interactive **Power BI dashboard** has been created to visualize flight prici
 
 🔗 **Power BI Dashboard:** [View Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMzgyZGlxYtMWVt5ZS00YmVmLWIxY2EtcGltMyNzgwNjc3LTcyYTQtNGNmNmMyMjYzZDNmZC0...)
 
+![alt text](<WhatsApp Image 2025-12-12 at 11.16.31 AM.jpeg>)
+
 ### Dashboard Features
 
 **1. Executive Summary Page**
