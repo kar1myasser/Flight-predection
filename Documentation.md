@@ -486,14 +486,8 @@ print(f"Predicted Price: ${predicted_price[0]:.2f}")
 - **Competitor analysis:** Cross-airline price comparison
 - **Dynamic pricing:** Real-time prediction updates
 
-### 4. Deployment
 
-- **REST API** for real-time predictions
-- **Web interface** for user-friendly access
-- **Model monitoring** for performance tracking
-- **A/B testing** for model comparison in production
-
-### 5. Additional Features
+### 4. Additional Features
 
 - **Confidence intervals** for predictions
 - **Feature contribution explanation** (SHAP values)
@@ -526,38 +520,5 @@ print(f"Predicted Price: ${predicted_price[0]:.2f}")
 3. **External factors:** Doesn't account for fuel prices, economic conditions
 4. **Seasonal variation:** May not capture full yearly patterns
 
----
 
-## Contributors
 
-This project was developed as part of the DEPI (Digital Egypt Pioneers Initiative) program.
-
----
-
-## License
-
-This project is for educational purposes.
-
----
-
-## Contact
-
-For questions or suggestions, please refer to the project maintainer.
-
----
-
-## Acknowledgments
-
-- **Dataset Source:** Airlines flight data
-- **Libraries:** scikit-learn, XGBoost, pandas, matplotlib, seaborn
-- **Program:** DEPI - Digital Egypt Pioneers Initiative
-
----
-
-## Version History
-
-- **v1.0** - Initial release with complete pipeline and model comparison
-
----
-
-*Last Updated: December 11, 2025*
