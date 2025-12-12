@@ -1,0 +1,47 @@
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+*.ico
+
+# Batch files
+*.bat
+
+# PDF files (documentation)
+*.pdf
+
+# HTML files (documentation)
+*.html
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+my_env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large data files (optional - uncomment if needed)
+# *.csv
+# *.pkl
