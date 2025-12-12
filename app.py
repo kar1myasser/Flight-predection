@@ -91,8 +91,8 @@ with st.sidebar:
         """
     - Book early for better prices
     - Non-stop flights cost more
-    - Early morning flights are cheaper
-    - Business class costs 3-4x more
+    - Late night flights are cheaper
+    - Business class costs 7-8x more
     - Prices increase closer to departure
     """
     )
